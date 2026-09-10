@@ -663,8 +663,8 @@ button { border: none; background: none; cursor: pointer; font: inherit; }
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5rem;
+  grid-template-columns: 2fr 3fr;
+  gap: 3rem;
   align-items: start;
 }
 
@@ -687,37 +687,54 @@ button { border: none; background: none; cursor: pointer; font: inherit; }
   margin-bottom: 2.5rem;
 }
 
-/* Feature cards */
+/* Feature cards — horizontal 3-column grid */
 .features {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 1px;
-  background: var(--border);
-  border: 1px solid var(--border);
-  border-radius: 3px;
-  overflow: hidden;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
 }
 .feature {
   background: var(--surface);
-  padding: 1.5rem 1.8rem;
-  display: block;
-  transition: background 0.25s;
+  border: 1px solid var(--border);
+  border-top: 2px solid var(--pink);
+  border-radius: 3px;
+  padding: 1.6rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.25s, background 0.25s;
 }
-.feature:hover { background: var(--surface-2); }
+.feature:hover {
+  background: var(--surface-2);
+  border-color: var(--pink);
+  border-top-color: var(--pink);
+}
 .feature-icon { display: none; }
-.feature-content {}
+.feature-number {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(201,80,80,0.3);
+  margin-bottom: 0.75rem;
+  transition: -webkit-text-stroke-color 0.25s;
+}
+.feature:hover .feature-number {
+  -webkit-text-stroke-color: rgba(201,80,80,0.7);
+}
+.feature-content { flex: 1; }
+.feature-eyebrow { display: none; }
+.feature-line { display: none; }
 .feature-title {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 1rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.3rem;
+  letter-spacing: 0.04em;
   color: var(--white);
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.1;
 }
 .feature-desc {
-  font-size: 0.82rem;
-  line-height: 1.65;
+  font-size: 0.8rem;
+  line-height: 1.7;
   color: var(--text-muted);
 }
 
@@ -1076,6 +1093,7 @@ footer {
 ═══════════════════════════════ */
 @media (max-width: 1000px) {
   .nosotros-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .features { grid-template-columns: 1fr; }
   .resenas-grid { grid-template-columns: 1fr 1fr; }
   .encuentranos-inner { grid-template-columns: 1fr; }
   .map-wrap { position: static; height: 300px; }
@@ -2011,24 +2029,26 @@ footer {
     </div>
     <div class="features reveal reveal-delay-1">
       <div class="feature">
+        <div class="feature-number">01</div>
         <div class="feature-content">
           <div class="feature-title">Carne del rancho</div>
           <p class="feature-desc">Nuestra carne viene directamente del rancho de los dueños. Una mezcla especial de res del norte de México, hecha exclusivamente para Las de Santa Fe.</p>
         </div>
       </div>
       <div class="feature">
+        <div class="feature-number">02</div>
         <div class="feature-content">
           <div class="feature-title">Pan hecho en casa</div>
           <p class="feature-desc">El pan brioche con ajonjolí lo elaboramos nosotros. Suave por dentro, con una costra ligera que aguanta perfectamente cada mordida.</p>
         </div>
       </div>
       <div class="feature">
+        <div class="feature-number">03</div>
         <div class="feature-content">
           <div class="feature-title">Las papas legendarias</div>
           <p class="feature-desc">Crujientes, calientes, con sal de limón y pimienta. Las papas aquí no son accesorio — son protagonistas. Pregúntale a cualquiera que haya venido.</p>
         </div>
       </div>
-
     </div>
   </div>
 </section>
